@@ -1,0 +1,167 @@
+/*******************************************
+ *
+ * Name.......:  Epson TM-T88II Library
+ * Description:  A Library to control the thermal printer (microprinter) Epson TM-T88II
+ * Author.....:  Stefan Huber
+ * Version....:  0.1
+ * Date.......:  2012-03-13
+ * Project....:  http://signalwerk.ch
+ * Contact....:  sh[at]signalwerk[dot]ch
+ * License....:  You may use this work under the terms of either the MIT License or 
+                 the GNU General Public License (GPL) Version 2
+ * Keywords...:  thermal, micro, receipt, printer, serial, tm-t88, tm88, tmt88, epson,
+ * Inspiration:  http://tomtaylor.co.uk/projects/microprinter
+                 https://github.com/tomtaylor/microprinter-arduino/tree
+                 http://rooreynolds.com/2009/02/01/microprinter/
+                 https://github.com/rooreynolds/microprinter
+                 http://www.ladyada.net/products/thermalprinter/
+                 https://github.com/adafruit/Adafruit-Thermal-Printer-Library/
+ * History....:  2012-03-13 V0.1 - first beta
+ *               2012-04-13 V0.5 - first public release
+ *
+ ********************************************/
+
+#include "Arduino.h"
+
+
+#include "thermalprinter.h"
+
+
+
+// static const int MyInt = 8; // would be ok
+// static const char *SOMETHING;
+// static const char *newLine = '\n';
+// static const char newLine = '\n';
+
+
+
+static const char LF = 0xA; // print buffer and line feed  
+    
+    
+    
+Epson::Epson(int rxPin, int txPin)
+{
+  this->_rxPin = rxPin;
+  this->_txPin = txPin;
+  this->start();
+}
+
+void Epson::start(){
+
+  pinMode(this->_txPin, OUTPUT);
+  pinMode(this->_rxPin, INPUT);  
+  this->_printer = new SoftwareSerial (this->_rxPin, this->_txPin);
+  this->_printer->begin(9600);
+}
+
+// Print and feed n lines
+// prints the data in the print buffer and feeds n lines
+void Epson::feed(uint8_t n){
+  this->write(0x1B);  
+  this->write(0x64);
+  this->write(n);    
+}
+
+// Print one line
+void Epson::feed(){
+  this->feed(1);    
+}
+
+
+// Set line spacing
+// sets the line spacing to n/180-inch
+void Epson::lineSpacing(uint8_t n){
+  this->write(0x1B);  
+  this->write(0x33);
+  this->write(n);  
+}
+
+// Select default line spacing
+// sets the line spacing to 1/6 inch (n=60). This is equivalent to 30 dots.
+void Epson::defaultLineSpacing(){
+  this->write(0x1B);  
+  this->write(0x32);
+}
+
+// Select an international character set
+//  0 = U.S.A. 
+//  1 = France 
+//  2 = Germany 
+//  3 = U.K. 
+//  4 = Denmark I 
+//  5 = Sweden 
+//  6 = Italy 
+//  7 = Spain 
+//  8 = Japan 
+//  9 = Norway 
+// 10 = Denmark II 
+// see reference for Details! 
+void Epson::characterSet(uint8_t n){
+  this->write(0x1B);  
+  this->write(0x52);
+  this->write(n);  
+}
+
+
+void Epson::doubleHeightOn(){
+  this->write(0x1B);    
+  this->write(0x21);  
+  this->write(16);
+}
+
+void Epson::doubleHeightOff(){
+  this->write(0x1B);  
+  this->write(0x21);    
+  this->write(0);
+}
+
+void Epson::boldOn(){
+  this->write(0x1B);  
+  this->write(0x21);    
+  this->write(8);
+}
+
+void Epson::boldOff(){
+  this->write(0x1B);  
+  this->write(0x21);    
+  this->write(0);
+}
+
+void Epson::underlineOff() {
+  this->write(0x1B);  
+  this->write(0x21);    
+  this->write(0);
+}
+void Epson::underlineOn() {
+  this->write(0x1B);  
+  this->write(0x21);    
+  this->write(128);
+}
+
+
+// Turn white/black reverse printing mode on/off
+void Epson::reverseOn() {
+  this->write(0x1D);  
+  this->write(0x42);    
+  this->write(1);
+}
+  
+void Epson::reverseOff() {
+  this->write(0x1D);  
+  this->write(0x42);    
+  this->write(0);
+}
+
+void Epson::cut() {
+  this->write(0x1D);
+  this->write('V');
+  this->write(66);
+  this->write(0xA); // print buffer and line feed
+}
+
+size_t Epson::write(uint8_t c) {
+  this->_printer->write(c);
+  return 1;
+}
+
+
