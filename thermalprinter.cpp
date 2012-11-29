@@ -1,42 +1,11 @@
 /*******************************************
- *
- * Name.......:  Epson TM-T88II Library
- * Description:  A Library to control the thermal printer (microprinter) Epson TM-T88II
- * Author.....:  Stefan Huber
- * Version....:  0.1
- * Date.......:  2012-03-13
- * Project....:  http://signalwerk.ch
- * Contact....:  sh[at]signalwerk[dot]ch
- * License....:  You may use this work under the terms of either the MIT License or 
-                 the GNU General Public License (GPL) Version 2
- * Keywords...:  thermal, micro, receipt, printer, serial, tm-t88, tm88, tmt88, epson,
- * Inspiration:  http://tomtaylor.co.uk/projects/microprinter
-                 https://github.com/tomtaylor/microprinter-arduino/tree
-                 http://rooreynolds.com/2009/02/01/microprinter/
-                 https://github.com/rooreynolds/microprinter
-                 http://www.ladyada.net/products/thermalprinter/
-                 https://github.com/adafruit/Adafruit-Thermal-Printer-Library/
- * History....:  2012-03-13 V0.1 - first beta
- *               2012-04-13 V0.5 - first public release
- *
+ * see header-file for further informations
  ********************************************/
 
 #include "Arduino.h"
-
-
 #include "thermalprinter.h"
 
-
-
-// static const int MyInt = 8; // would be ok
-// static const char *SOMETHING;
-// static const char *newLine = '\n';
-// static const char newLine = '\n';
-
-
-
 static const char LF = 0xA; // print buffer and line feed  
-    
     
     
 Epson::Epson(int rxPin, int txPin)
