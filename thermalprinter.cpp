@@ -15,6 +15,13 @@ Epson::Epson(int rxPin, int txPin)
   this->start();
 }
 
+void Epson::getStatus(){
+  this->write(0x1D);    
+  this->write(0x72);  
+  this->write(1);
+}
+
+
 void Epson::start(){
 
   pinMode(this->_txPin, OUTPUT);
