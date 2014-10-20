@@ -23,10 +23,14 @@ void Epson::start(){
   this->_printer->begin(9600);
 }
 
-void Epson::getStatus(){
+int Epson::getStatus(){
   this->write(0x1D);    
   this->write(0x72);  
   this->write(1);
+  
+  int result;
+  result = this->read();
+  return result;
 }
 
 
