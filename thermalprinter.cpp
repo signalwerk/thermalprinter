@@ -138,6 +138,32 @@ void Epson::justifyRight() {
   this->write(0x61);    
   this->write(2);
 }
+//n range 1-255f
+void barcodeHeight(uint8_t n); {
+  this->write(0x1D);  
+  this->write(0x68);    
+  this->write(n);
+}
+//n range 2-6
+void barcodeWidth(uint8_t n); {
+  this->write(0x1D);  
+  this->write(0x77);    
+  this->write(n);
+}
+//n range 0-3
+void barcodeNumberPosition(uint8_t n); {
+  this->write(0x1D);  
+  this->write(0x48);    
+  this->write(n);
+}
+//m range 65-73 (code type)
+//n (digit length)
+void printBarcode(uint8_t m, uint8_t n); {
+  this->write(0x1D);  
+  this->write(0x6B);    
+  this->write(m);
+  this->write(n);
+}
 
 void Epson::cut() {
   this->write(0x1D);
