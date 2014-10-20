@@ -37,10 +37,11 @@ public:
   
 
   size_t write(uint8_t c);
+  byte read();
 
   void start();
 
-int getStatus();
+void getStatus();
 void boldOff();
 void boldOn();
 void characterSet(uint8_t n);
