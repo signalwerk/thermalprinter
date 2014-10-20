@@ -138,7 +138,7 @@ void Epson::justifyRight() {
   this->write(0x61);    
   this->write(2);
 }
-//n range 1-255f
+//n range 1-255
 void barcodeHeight(uint8_t n); {
   this->write(0x1D);  
   this->write(0x68);    
