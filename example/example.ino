@@ -17,8 +17,10 @@ void setup()
   delay(1000);
 
   TM88.start();
+  TM88.justifyCenter();
   TM88.println("Hello World start");  
   
+  TM88.justifyLeft();
   TM88.println("Feed 3 start");  
   TM88.feed(3); 
   TM88.println("Feed 3 end");  
@@ -72,7 +74,8 @@ void setup()
   TM88.println(" Hamburgefonts ");  
   TM88.reverseOff();   
   TM88.println("reverse off");      
-    
+  
+  TM88.justifyRight();
   TM88.println("Hello World end");  
   
   TM88.cut();  
