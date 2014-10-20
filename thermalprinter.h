@@ -57,10 +57,10 @@ void underlineOn();
 void justifyLeft();
 void justifyCenter();
 void justifyRight();
-void barcodeHeight();
-void barcodeWidth();
-void barcodeNumberPosition();
-void printBarcode();
+void barcodeHeight(uint8_t n);
+void barcodeWidth(uint8_t n);
+void barcodeNumberPosition(uint8_t n);
+void printBarcode(uint8_t m,uint8_t n);
 void cut();
 
 
