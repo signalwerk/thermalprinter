@@ -54,6 +54,9 @@ void reverseOff();
 void reverseOn();
 void underlineOff();
 void underlineOn();
+void justifyLeft();
+void justifyCenter();
+void justifyRight();
 void cut();
 
 
