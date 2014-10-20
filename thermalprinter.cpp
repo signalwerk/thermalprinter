@@ -121,6 +121,24 @@ void Epson::reverseOff() {
   this->write(0);
 }
 
+void Epson::justifyLeft() {
+  this->write(0x1B);  
+  this->write(0x61);    
+  this->write(0);
+}
+
+void Epson::justifyCenter() {
+  this->write(0x1B);  
+  this->write(0x61);    
+  this->write(1);
+}
+
+void Epson::justifyRight() {
+  this->write(0x1B);  
+  this->write(0x61);    
+  this->write(2);
+}
+
 void Epson::cut() {
   this->write(0x1D);
   this->write('V');
