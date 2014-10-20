@@ -75,6 +75,13 @@ void setup()
   TM88.reverseOff();   
   TM88.println("reverse off");      
   
+  TM88.justifyCenter();
+  TM88.barcodeHeight(50);
+  TM88.barcodeWidth(3);
+  TM88.barcodeNumberPosition(2);
+  TM88.printBarcode(67,12);
+  TM88.println("496595707379");
+  
   TM88.justifyRight();
   TM88.println("Hello World end");  
   
