@@ -40,7 +40,7 @@ public:
 
   void start();
 
-
+void getStatus();
 void boldOff();
 void boldOn();
 void characterSet(uint8_t n);
