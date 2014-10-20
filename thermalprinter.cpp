@@ -15,13 +15,6 @@ Epson::Epson(int rxPin, int txPin)
   this->start();
 }
 
-void Epson::getStatus(){
-  this->write(0x1D);    
-  this->write(0x72);  
-  this->write(1);
-}
-
-
 void Epson::start(){
 
   pinMode(this->_txPin, OUTPUT);
@@ -29,6 +22,13 @@ void Epson::start(){
   this->_printer = new SoftwareSerial (this->_rxPin, this->_txPin);
   this->_printer->begin(9600);
 }
+
+void Epson::getStatus(){
+  this->write(0x1D);    
+  this->write(0x72);  
+  this->write(1);
+}
+
 
 // Print and feed n lines
 // prints the data in the print buffer and feeds n lines
