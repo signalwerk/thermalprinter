@@ -54,6 +54,10 @@ void reverseOff();
 void reverseOn();
 void underlineOff();
 void underlineOn();
+void barcodeHeight();
+void barcodeWidth();
+void barcodeNumberPosition();
+void printBarcode();
 void cut();
 
 
