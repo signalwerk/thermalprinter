@@ -37,10 +37,11 @@ public:
   
 
   size_t write(uint8_t c);
+  byte read();
 
   void start();
 
-
+void getStatus();
 void boldOff();
 void boldOn();
 void characterSet(uint8_t n);
@@ -54,6 +55,13 @@ void reverseOff();
 void reverseOn();
 void underlineOff();
 void underlineOn();
+void justifyLeft();
+void justifyCenter();
+void justifyRight();
+void barcodeHeight(uint8_t n);
+void barcodeWidth(uint8_t n);
+void barcodeNumberPosition(uint8_t n);
+void printBarcode(uint8_t m,uint8_t n);
 void cut();
 
 

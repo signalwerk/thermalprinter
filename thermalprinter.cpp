@@ -23,6 +23,19 @@ void Epson::start(){
   this->_printer->begin(9600);
 }
 
+void Epson::getStatus(){
+  this->write(0x1D);    
+  this->write(0x72);  
+  this->write(1);
+}
+
+byte Epson::read(){
+    byte result;
+    result = this->_printer->read();
+    return result;
+}
+
+
 // Print and feed n lines
 // prints the data in the print buffer and feeds n lines
 void Epson::feed(uint8_t n){
@@ -119,6 +132,50 @@ void Epson::reverseOff() {
   this->write(0x1D);  
   this->write(0x42);    
   this->write(0);
+}
+
+void Epson::justifyLeft() {
+  this->write(0x1B);  
+  this->write(0x61);    
+  this->write(0);
+}
+
+void Epson::justifyCenter() {
+  this->write(0x1B);  
+  this->write(0x61);    
+  this->write(1);
+}
+
+void Epson::justifyRight() {
+  this->write(0x1B);  
+  this->write(0x61);    
+  this->write(2);
+}
+//n range 1-255
+void Epson::barcodeHeight(uint8_t n) {
+  this->write(0x1D);  
+  this->write(0x68);    
+  this->write(n);
+}
+//n range 2-6
+void Epson::barcodeWidth(uint8_t n) {
+  this->write(0x1D);  
+  this->write(0x77);    
+  this->write(n);
+}
+//n range 0-3
+void Epson::barcodeNumberPosition(uint8_t n) {
+  this->write(0x1D);  
+  this->write(0x48);    
+  this->write(n);
+}
+//m range 65-73 (code type)
+//n (digit length)
+void Epson::printBarcode(uint8_t m, uint8_t n) {
+  this->write(0x1D);  
+  this->write(0x6B);    
+  this->write(m);
+  this->write(n);
 }
 
 void Epson::cut() {

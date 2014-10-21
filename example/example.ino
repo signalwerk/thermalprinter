@@ -17,8 +17,10 @@ void setup()
   delay(1000);
 
   TM88.start();
+  TM88.justifyCenter();
   TM88.println("Hello World start");  
   
+  TM88.justifyLeft();
   TM88.println("Feed 3 start");  
   TM88.feed(3); 
   TM88.println("Feed 3 end");  
@@ -72,7 +74,15 @@ void setup()
   TM88.println(" Hamburgefonts ");  
   TM88.reverseOff();   
   TM88.println("reverse off");      
-    
+  
+  TM88.justifyCenter();
+  TM88.barcodeHeight(50);
+  TM88.barcodeWidth(3);
+  TM88.barcodeNumberPosition(2);
+  TM88.printBarcode(67,12);
+  TM88.println("496595707379");
+  
+  TM88.justifyRight();
   TM88.println("Hello World end");  
   
   TM88.cut();  
