@@ -6,6 +6,8 @@
 #define rxPin 6
 #define txPin 7
 
+int printStatus = 0;
+
 Epson TM88 = Epson(rxPin, txPin); // init the Printer with Output-Pin
 
 void setup()
@@ -92,6 +94,15 @@ void setup()
 
 void loop()                     // run over and over again
 {
+  
+  printStatus = TM88.getStatus();     // get the current status of the TM88 printer
+  if (printStatus == 22) {            // if status is 22 then we are good
+    Serial.println("printer online");     // debug that we are online
+  } else {
+    Serial.print("printer offline: ");    // debug that we are offline
+    Serial.println(printStatus);          // debug the returned status code  
+  } 
+  
   
   if (Serial.available() > 0) {
     TM88.print(Serial.read());
