@@ -36,12 +36,13 @@ public:
   Epson(int rxPin, int txPin);
   
 
-  size_t write(uint8_t c);
-  byte read();
+size_t write(uint8_t c);
+int read();
 
-  void start();
 
-void getStatus();
+void start();
+
+int getStatus();
 void boldOff();
 void boldOn();
 void characterSet(uint8_t n);
