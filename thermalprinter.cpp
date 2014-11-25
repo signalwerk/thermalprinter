@@ -23,18 +23,21 @@ void Epson::start(){
   this->_printer->begin(9600);
 }
 
-void Epson::getStatus(){
-  this->write(0x1D);    
-  this->write(0x72);  
+// query status of printer. when online returns value 22.
+int Epson::getStatus(){
+  this->write(0x10);    
+  this->write(0x04);  
   this->write(1);
+  int result;
+  result = this->_printer->read();
+  return result;
 }
 
-byte Epson::read(){
-    byte result;
+int Epson::read(){
+    int result;
     result = this->_printer->read();
     return result;
 }
-
 
 // Print and feed n lines
 // prints the data in the print buffer and feeds n lines
@@ -189,5 +192,6 @@ size_t Epson::write(uint8_t c) {
   this->_printer->write(c);
   return 1;
 }
+
 
 
