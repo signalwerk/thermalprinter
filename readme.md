@@ -22,6 +22,7 @@ Stefan Huber – sh[at]signalwerk[dot]ch. Contributions appreciated.
 You may use this work under the terms of either the MIT License or the GNU General Public License (GPL) Version 3
 
 ## History
+* 2014-11-24 V0.6 - include functionality for reading printer status, printing barcodes and justification (docwisdom contribution)
 * 2012-04-13 V0.5 - first public release
 * 2012-03-13 V0.1 - first beta of the class extracted of the project
 * 2010-06-05      – first show of my thermal printer project on a public lecture at «Der Tag der Schrift» http://www.typo-online.ch/tds/2010/
