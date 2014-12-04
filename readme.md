@@ -1,4 +1,4 @@
-# Epson TM-T88II Library
+# Epson TM-T88II Library 
 A Library to control an Epson TM-T88II thermal printer (microprinter) by an arduino via serial connection.
 
 # Requirements
@@ -15,17 +15,20 @@ To get Arduino work together with the thermal priner on RS232 (serial) you need 
 * http://www.ladyada.net/products/thermalprinter/
 * https://github.com/adafruit/Adafruit-Thermal-Printer-Library/
 
-##  Author
-Stefan Huber – sh[at]signalwerk[dot]ch. Contributions appreciated.
+##  Contributors
+* [docwisdom](https://github.com/docwisdom)
+* [signalwerk](https://github.com/signalwerk)
+
+Contributions appreciated.
 
 ## License
 You may use this work under the terms of either the MIT License or the GNU General Public License (GPL) Version 3
 
 ## History
-* 2014-11-24 V0.6 - include functionality for reading printer status, printing barcodes and justification (docwisdom contribution)
-* 2012-04-13 V0.5 - first public release
-* 2012-03-13 V0.1 - first beta of the class extracted of the project
-* 2010-06-05      – first show of my thermal printer project on a public lecture at «Der Tag der Schrift» http://www.typo-online.ch/tds/2010/
+* 2014-11-24 - include functionality for reading printer status, printing barcodes and justification 
+* 2012-04-13 - first public release
+* 2012-03-13 - first beta of the class extracted for standalone
+* 2010-06-05 – first public lecture with the code («Der Tag der Schrift» http://www.typo-online.ch/tds/2010/)
 
 
 ### Keywords
